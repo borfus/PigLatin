@@ -1,16 +1,7 @@
-function translatePigLatin(str) {
-  var vowels = ["a", "e", "i", "o", "u"];
-  var suffix;
-  
-  if (vowels.includes(str.charAt(0))) {
-    suffix = "way";
-    return str + suffix;
-  } else {
-    for (var i = 0; i < str.length; i++) {
-      if (vowels.includes(str.charAt(i))) {
-        suffix = str.slice(0, i) + "ay";
-        return str.slice(i) + suffix;
-      }
-    }
-  }  
-}
+const vowels = ['a', 'e', 'i', 'o', 'u'];
+
+const translate = s => {
+  if (vowels.includes(s[0])) return s + 'way';
+  const f = Array.from(s).findIndex(x => vowels.includes(x));
+  return s.slice(f) + s.slice(0, f) + 'ay';
+};
